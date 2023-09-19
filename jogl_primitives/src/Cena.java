@@ -35,31 +35,31 @@ public class Cena implements GLEventListener{
         //Linhas
 
         //Linha reta vertical
-        gl.glColor3f(1,1,1);
-        gl.glLineWidth(3);
+        gl.glColor3f(0,1,0); //cor verde
+        gl.glLineWidth(6);
         gl.glBegin(GL.GL_LINES);
         gl.glVertex2f(0,0);
         gl.glVertex2f( 0,10);
         gl.glEnd();
 
         //Linha reta horizontal
-        gl.glColor3f(1,1,1);
-        gl.glLineWidth(3);
+        gl.glColor3f(1,0,0); //cor vermelha
+        gl.glLineWidth(5);
         gl.glBegin(GL.GL_LINES);
         gl.glVertex2f( 0,0);
         gl.glVertex2f( 10,0);
         gl.glEnd();
 
         //Linha diagonal inferior esquerda
-        gl.glColor3f(1,1,1);
-        gl.glLineWidth(3);
+        gl.glColor3f(0,0,1); //cor azul
+        gl.glLineWidth(4);
         gl.glBegin(GL.GL_LINES);
         gl.glVertex2f(0, 0);
         gl.glVertex2f(-10, -10);
         gl.glEnd();
 
         //Pontos
-        gl.glColor3f(1,1,1);
+        gl.glColor3f(0,0,1);
         gl.glPointSize(5);
         gl.glBegin(GL.GL_POINTS);
         gl.glVertex2f(-9, 9);
@@ -69,7 +69,8 @@ public class Cena implements GLEventListener{
         gl.glEnd();
 
         //Linhas em Loop
-        gl.glColor3f(1,1,1);
+        gl.glColor3f(1,0,0);
+        gl.glLineWidth(1);
         gl.glBegin(GL.GL_LINE_LOOP);
         gl.glVertex2f(-2, 5);
         gl.glVertex2f(-2,2);
@@ -81,18 +82,20 @@ public class Cena implements GLEventListener{
         gl.glEnd();
 
         //Quadrados
-        gl.glColor3f(1,1,1);
+        gl.glColor3f(0,1,0);
         gl.glBegin(GL2.GL_QUADS);
         gl.glVertex2f(6, 4);
         gl.glVertex2f(7, 4);
         gl.glVertex2f(7, 3);
         gl.glVertex2f(6, 3);
 
+        gl.glColor3f(1,1,0); //cor amarela
         gl.glVertex2f(7, 3);
         gl.glVertex2f(8, 3);
         gl.glVertex2f(8, 2);
         gl.glVertex2f(7, 2);
 
+        gl.glColor3f(1,0,1); //cor rosa
         gl.glVertex2f(8, 2);
         gl.glVertex2f(9, 2);
         gl.glVertex2f(9, 1);
@@ -100,7 +103,7 @@ public class Cena implements GLEventListener{
         gl.glEnd();
 
         //Poligono
-        gl.glColor3f(1, 1, 1);
+        gl.glColor3f(1, 1, 0);
         gl.glBegin(GL2.GL_POLYGON);
         gl.glVertex2f(-5, -2);
         gl.glVertex2f(-7, -1);
@@ -110,7 +113,7 @@ public class Cena implements GLEventListener{
         gl.glEnd();
 
         //Triangle fan
-        gl.glColor3f(1, 1,1);
+        gl.glColor3f(0, 0,1);
         gl.glBegin(GL.GL_TRIANGLE_FAN);
         gl.glVertex2f(6, -6);
         gl.glVertex2f(8, -7);
@@ -118,7 +121,6 @@ public class Cena implements GLEventListener{
         gl.glVertex2f(2, -9);
         gl.glVertex2f(2, -5);
         gl.glVertex2f(5, -4);
-
         gl.glEnd();
 
         gl.glFlush();
