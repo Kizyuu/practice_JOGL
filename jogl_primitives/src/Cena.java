@@ -108,6 +108,19 @@ public class Cena implements GLEventListener{
         gl.glVertex2f(-3, -5);
         gl.glVertex2f(-2, -1);
         gl.glEnd();
+
+        //Triangle fan
+        gl.glColor3f(1, 1,1);
+        gl.glBegin(GL.GL_TRIANGLE_FAN);
+        gl.glVertex2f(6, -6);
+        gl.glVertex2f(8, -7);
+        gl.glVertex2f(7, -8);
+        gl.glVertex2f(2, -9);
+        gl.glVertex2f(2, -5);
+        gl.glVertex2f(5, -4);
+
+        gl.glEnd();
+
         gl.glFlush();
     }
 
