@@ -16,8 +16,8 @@ public class Cena implements GLEventListener{
         //dados iniciais da cena
         glu = new GLU();
         //Estabelece as coordenadas do SRU (Sistema de Referencia do Universo)
-        xMin = yMin = zMin = -1;
-        xMax = yMax = zMax = 1;
+        xMin = yMin = zMin = -10;
+        xMax = yMax = zMax = 10;
     }
 
     @Override
@@ -30,37 +30,67 @@ public class Cena implements GLEventListener{
         gl.glClear(GL2.GL_COLOR_BUFFER_BIT);       
         gl.glLoadIdentity(); //lê a matriz identidade
 
-        //Triângulo:
+        //Quadrado e suas transformações
 
-        //Translação
-        gl.glColor3f(1,1,0); // cor amarelo
-        gl.glTranslatef(0.5f, 0.5f, 0);
-        gl.glBegin(GL.GL_TRIANGLES);
-        gl.glVertex2f(0,0);
-        gl.glVertex2f( 0.5f,0.5f); //a letra "f" representa o float do valor
-        gl.glVertex2f(1,0);
+        //transladar para canto superior direito
+        gl.glColor3f(0,1,0);
+        gl.glPushMatrix(); // armazena transformações
+        gl.glTranslatef(7, 5, 0); // transformação
+        gl.glBegin(GL2.GL_QUADS);
+        gl.glVertex2f(0, 0);
+        gl.glVertex2f(4, 0);
+        gl.glVertex2f(4,4);
+        gl.glVertex2f(0, 4);
         gl.glEnd();
-        gl.glLoadIdentity();
+        gl.glPopMatrix(); // retira as transformações
 
-        //Escala
+        //transladar para canto inferior esquerdo
+        gl.glColor3f(1,1,0);
+        gl.glPushMatrix();
+        gl.glTranslatef(-7, -5, 0); // transformação
+        gl.glBegin(GL2.GL_QUADS);
+        gl.glVertex2f(0, 0);
+        gl.glVertex2f(4, 0);
+        gl.glVertex2f(4,4);
+        gl.glVertex2f(0, 4);
+        gl.glEnd();
+        gl.glPopMatrix();
+
+        //rotacionar 45º em relação ao ponto z
+        gl.glColor3f(1,0,1);
+        gl.glPushMatrix();
+        gl.glRotatef(45, 0, 0, 1); // transformação
+        gl.glBegin(GL2.GL_QUADS);
+        gl.glVertex2f(0, 0);
+        gl.glVertex2f(4, 0);
+        gl.glVertex2f(4,4);
+        gl.glVertex2f(0, 4);
+        gl.glEnd();
+        gl.glPopMatrix();
+
+        //aumentar a escala
         gl.glColor3f(1,1,1);
-        gl.glScaled(0.5f, 0.5f, 1);
-        gl.glBegin(GL.GL_TRIANGLES);
-        gl.glVertex2f(0,0);
-        gl.glVertex2f( 0.5f,0.5f); //a letra "f" representa o float do valor
-        gl.glVertex2f(1,0);
+        gl.glPushMatrix();
+        gl.glScalef(2, 2, 0); // transformação
+        gl.glBegin(GL2.GL_QUADS);
+        gl.glVertex2f(0, 0);
+        gl.glVertex2f(4, 0);
+        gl.glVertex2f(4,4);
+        gl.glVertex2f(0, 4);
         gl.glEnd();
-        gl.glLoadIdentity();
+        gl.glPopMatrix();
 
-        //Rotação
-        gl.glColor3f(0,0,1);
-        gl.glRotatef(90, 0, 0,1);
-        gl.glBegin(GL.GL_TRIANGLES);
-        gl.glVertex2f(0,0);
-        gl.glVertex2f( 0.5f,0.5f); //a letra "f" representa o float do valor
-        gl.glVertex2f(1,0);
+        //diminuir a escala
+        gl.glColor3f(0,1,1);
+        gl.glPushMatrix();
+        gl.glScalef(0.5f, 0.5f, 0); // transformação
+        gl.glBegin(GL2.GL_QUADS);
+        gl.glVertex2f(0, 0);
+        gl.glVertex2f(4, 0);
+        gl.glVertex2f(4,4);
+        gl.glVertex2f(0, 4);
         gl.glEnd();
-        gl.glLoadIdentity();
+        gl.glPopMatrix();
 
         gl.glFlush();
     }
@@ -96,6 +126,6 @@ public class Cena implements GLEventListener{
         System.out.println("Reshape: " + width + ", " + height);
     }    
        
-    @Overrides
+    @Override
     public void dispose(GLAutoDrawable drawable) {}         
 }
